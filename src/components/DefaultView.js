@@ -1,9 +1,10 @@
 import React from "react";
+
 import Container from "react-bootstrap/Container";
 import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 
-const DefaultView = () => {
+function DefaultView(props) {
   return (
     <div>
       <Container
@@ -15,50 +16,48 @@ const DefaultView = () => {
       >
         <CardDeck>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img
+              variant="top"
+              src="https://tiffinandteaofficial.com/wp-content/uploads/2020/11/IMG_7770-1-scaled-e1606322357539.jpg"
+            />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>Search Foods</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                Search for your desired food and make use of what we have to
+                offer.
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
           </Card>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img
+              variant="top"
+              src="https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Kebab.jpg"
+            />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>Recipe & Ingredients</Card.Title>
               <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.{" "}
+                Get your favourite food's recipe and ingredients included and
+                start making mouth watering dishes with our help.
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
           </Card>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img
+              variant="top"
+              src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Pizza-from-Scratch_EXPS_FT20_8621_F_0505_1_home.jpg"
+            />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>About Us</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
+                We provide all the needs of people to make special dishes at
+                home with all the home ingredients. Your need is our service.
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
           </Card>
         </CardDeck>
       </Container>
     </div>
   );
-};
+}
 
 export default DefaultView;
