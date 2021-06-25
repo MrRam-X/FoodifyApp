@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DefaultView from "./DefaultView";
 import RecipeModal from "./RecipeModal";
 import IngredientsModal from "./IngredientsModal";

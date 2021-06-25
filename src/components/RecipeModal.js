@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 // import ModalHeader from 'react-bootstrap/ModalHeader'
 // import ModalTitle from 'react-bootstrap/ModalTitle'
-import { useState } from "react";
+
 import ListGroup from "react-bootstrap/ListGroup";
 
 function RecipeModal(props) {
