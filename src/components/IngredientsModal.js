@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import IngredientList from "./IngredientList";
 import ListGroup from "react-bootstrap/ListGroup";
 
 function IngredientsModal(props) {
