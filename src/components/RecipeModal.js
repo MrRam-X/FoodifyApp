@@ -2,8 +2,12 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 // import ModalHeader from 'react-bootstrap/ModalHeader'
 // import ModalTitle from 'react-bootstrap/ModalTitle'
+import { useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function RecipeModal(props) {
+  const allRecipe = props.allRecipe;
+
   return (
     <div>
       <Modal
@@ -14,14 +18,22 @@ function RecipeModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-            The recipe goes here
+            Recipe for {props.foodTitle}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make
+        <Modal.Body scrollable>
+          {props.isRecipe && (
+            <ListGroup variant="flush">
+              {allRecipe[0].analyzedInstructions[0].steps.map((item) => {
+                return (
+                  <ListGroup.Item key={item.number}>
+                    Step{` ${item.number} : `}
+                    {item.step}
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          )}
         </Modal.Body>
       </Modal>
     </div>

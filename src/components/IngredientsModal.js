@@ -1,7 +1,11 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
+import IngredientList from "./IngredientList";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function IngredientsModal(props) {
+  const allIngredients = props.allIngredients;
+
   return (
     <div>
       <Modal
@@ -12,14 +16,19 @@ function IngredientsModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-            The Ingredients goes here
+            Ingredients for {props.foodTitle}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make
+        <Modal.Body scrollable>
+          {props.isIngredient && (
+            <ListGroup variant="flush">
+              {allIngredients[0].extendedIngredients.map((item) => {
+                return (
+                  <ListGroup.Item key={item.id}>{item.original}</ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          )}
         </Modal.Body>
       </Modal>
     </div>

@@ -15,8 +15,6 @@ function SearchFood() {
   const [resultFood, setResultFood] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [resultFound, setResultFound] = useState(false);
-  const [ingredients, setIngredients] = useState(null);
-  const [recipe, setRecipe] = useState(null);
 
   function foodSearchHandler(e) {
     e.preventDefault();
@@ -25,12 +23,12 @@ function SearchFood() {
     )
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setSearchedFood("");
         setResultFood(result.results);
         setResultFound(true);
         setIsLoading(false);
-        //console.log(resultFood.results.length);
+
         if (result.results.length === 0) {
           window.alert("No such food found");
           setIsLoading("true");

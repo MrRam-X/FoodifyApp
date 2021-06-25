@@ -18,7 +18,7 @@ function DefaultView(props) {
           <Card>
             <Card.Img
               variant="top"
-              src="https://tiffinandteaofficial.com/wp-content/uploads/2020/11/IMG_7770-1-scaled-e1606322357539.jpg"
+              src="https://i.pinimg.com/originals/c7/a9/f7/c7a9f758dd660d91d9fa92c98c225d45.jpg"
             />
             <Card.Body>
               <Card.Title>Search Foods</Card.Title>

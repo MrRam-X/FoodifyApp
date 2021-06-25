@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DefaultView from "./DefaultView";
 import RecipeModal from "./RecipeModal";
 import IngredientsModal from "./IngredientsModal";
@@ -13,13 +13,26 @@ import Button from "react-bootstrap/Button";
 const PrimaryView = (props) => {
   const [showRecipeModal, setShowRecipeModal] = useState(false);
   const [showIngredientModal, setShowIngredientModal] = useState(false);
+  const [modalFoodId, setModalFoodId] = useState(0);
+  const [modalFoodName, setModalFoodName] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState([]);
+  const [isIngredient, setIsIngredient] = useState(false);
+  const [isRecipe, setIsRecipe] = useState(false);
 
-  function recipeModalHandler() {
-    setShowRecipeModal(true);
-  }
-
-  function ingredientModalHandler() {
-    setShowIngredientModal(true);
+  function foodIngredients(id) {
+    fetch(
+      `https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${process.env.REACT_APP_FOOD_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+        setIngredients(result);
+        setRecipe(result);
+        setIsIngredient(true);
+        setIsRecipe(true);
+        //console.log(ingredients);
+      });
   }
 
   if (props.resultFound === true && props.resultFood !== []) {
@@ -36,17 +49,42 @@ const PrimaryView = (props) => {
                 <Card.Footer
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Button onClick={recipeModalHandler} variant="secondary">
+                  <Button
+                    onClick={() => {
+                      setShowRecipeModal(true);
+                      setModalFoodId(item.id);
+                      setModalFoodName(item.title);
+                      foodIngredients(item.id);
+                    }}
+                    variant="secondary"
+                  >
                     Recipe
                   </Button>
-                  <Button onClick={ingredientModalHandler} variant="light">
+
+                  <Button
+                    onClick={() => {
+                      setShowIngredientModal(true);
+                      setModalFoodId(modalFoodId);
+                      setModalFoodName(item.title);
+                      foodIngredients(item.id);
+                    }}
+                    variant="light"
+                  >
                     Ingredient
                   </Button>
                   <RecipeModal
+                    isRecipe={isRecipe}
+                    recipeId={modalFoodId}
+                    foodTitle={modalFoodName}
+                    allRecipe={recipe}
                     showRecipeModal={showRecipeModal}
                     setShowRecipeModal={setShowRecipeModal}
                   />
                   <IngredientsModal
+                    isIngredient={isIngredient}
+                    ingredientId={modalFoodId}
+                    foodTitle={modalFoodName}
+                    allIngredients={ingredients}
                     showIngredientModal={showIngredientModal}
                     setShowIngredientModal={setShowIngredientModal}
                   />
@@ -55,6 +93,7 @@ const PrimaryView = (props) => {
             );
           })}
         </CardColumns>
+        {/* {console.log(ingredients)} */}
       </Container>
     );
   }
